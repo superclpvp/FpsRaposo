@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://n0g1nrkc3oy5"]
+
+[ext_resource type="Script" path="res://cenas/teste.gd" id="1_witnp"]
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_witnp")

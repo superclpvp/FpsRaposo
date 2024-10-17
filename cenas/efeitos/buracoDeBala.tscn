@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0f8nrr87rluq"]
+
+[ext_resource type="Texture2D" uid="uid://byow5our26jeg" path="res://Textures/Efeitos/buraco de bala.png" id="1_3a54q"]
+
+[node name="Decal" type="Decal"]
+size = Vector3(0.5, 0.5, 0.5)
+texture_albedo = ExtResource("1_3a54q")
+upper_fade = 3.60501e-05
+lower_fade = 1e-05

@@ -1,0 +1,222 @@
+[gd_scene load_steps=18 format=3 uid="uid://fb6oqeki8ic0"]
+
+[ext_resource type="Script" path="res://cenas/player/player.gd" id="1_ipjnr"]
+[ext_resource type="PackedScene" uid="uid://dsyb4q1x2gs1j" path="res://models/armas/Pistola1/Pistola1.gltf" id="2_1d7ny"]
+[ext_resource type="Texture2D" uid="uid://dbjhy7cgqv2vx" path="res://Textures/Efeitos/star_01.png" id="3_luuk0"]
+[ext_resource type="PackedScene" uid="uid://huoeys2fwpf" path="res://models/armas/Fuzil1/fuzil1.gltf" id="4_5po0o"]
+[ext_resource type="Texture2D" uid="uid://cdqdlhljglax3" path="res://Textures/Hud/1545215.png" id="4_poi1q"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_myi3t"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nt0gr"]
+
+[sub_resource type="Gradient" id="Gradient_o75dl"]
+offsets = PackedFloat32Array(0, 0.209091, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.381818, 0.381818, 0.381818, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cuxph"]
+gradient = SubResource("Gradient_o75dl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3bl37"]
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_cuxph")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kltci"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("3_luuk0")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l2jyc"]
+material = SubResource("StandardMaterial3D_kltci")
+size = Vector2(0.5, 0.5)
+orientation = 2
+
+[sub_resource type="Animation" id="Animation_8sbuo"]
+resource_name = "Andando_Pist_1"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Armas/pistola:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2),
+"update": 0,
+"values": [Vector3(0.354228, -0.558584, -0.966758), Vector3(0.399325, -0.754931, -0.966758), Vector3(0.49623, -0.619377, -0.966758), Vector3(0.399325, -0.754931, -0.966758)]
+}
+
+[sub_resource type="Animation" id="Animation_liag2"]
+resource_name = "Idle_Pist_1"
+length = 3.0
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Armas/pistola:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0.550415, -0.658367, -0.966758), Vector3(0.550415, -0.590564, -0.966758)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Armas/pistola:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(-3.76046e-09, 1.5708, 0.0861145)]
+}
+
+[sub_resource type="Animation" id="Animation_01yp3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Armas/pistola:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.550415, -0.658367, -0.966758)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Armas/pistola:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_21yfl"]
+resource_name = "Tiro_Pist_1"
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Armas/pistola:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0.550415, -0.547948, -0.966758), Vector3(0.550415, -0.658367, -0.966758)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Armas/pistola:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(-1.21599e-08, 1.5708, 0.281906), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4code"]
+_data = {
+"Andando_Pist_1": SubResource("Animation_8sbuo"),
+"Idle_Pist_1": SubResource("Animation_liag2"),
+"RESET": SubResource("Animation_01yp3"),
+"Tiro_Pist_1": SubResource("Animation_21yfl")
+}
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_ipjnr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.972522, 0)
+shape = SubResource("CapsuleShape3D_myi3t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.972522, 0)
+mesh = SubResource("CapsuleMesh_nt0gr")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00165129, 1.52539, 0.296056)
+fov = 75.2906
+
+[node name="TextureRect" type="TextureRect" parent="Camera3D"]
+custom_minimum_size = Vector2(35, 35)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -17.5
+offset_top = -17.5
+offset_right = 17.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+texture = ExtResource("4_poi1q")
+expand_mode = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Camera3D"]
+offset_left = 30.0
+offset_top = 610.0
+offset_right = 318.0
+offset_bottom = 638.0
+max_value = 3.0
+value = 3.0
+show_percentage = false
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.04827)
+target_position = Vector3(0, 0, -200)
+collision_mask = 3
+
+[node name="Armas" type="Node3D" parent="Camera3D"]
+
+[node name="pistola" parent="Camera3D/Armas" instance=ExtResource("2_1d7ny")]
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, 0.550415, -0.658367, -0.966758)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D/Armas/pistola"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.554591, 0.441137, 0.0179061)
+emitting = false
+amount = 1
+lifetime = 0.25
+one_shot = true
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_3bl37")
+draw_pass_1 = SubResource("PlaneMesh_l2jyc")
+
+[node name="Fuzil1" parent="Camera3D/Armas" instance=ExtResource("4_5po0o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.538234, -0.628045, -1.01552)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4code")
+}
+playback_default_blend_time = 0.05
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

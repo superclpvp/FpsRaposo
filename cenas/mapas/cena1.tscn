@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfjv8j0taaw6a"]
+
+[ext_resource type="PackedScene" uid="uid://f0efmj3dx7ni" path="res://models/map.tscn" id="1_6sr6e"]
+[ext_resource type="Script" path="res://cenas/mapas/cena_1.gd" id="1_h0ufm"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l08xl"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_vku8k"]
+sky_material = SubResource("ProceduralSkyMaterial_l08xl")
+
+[sub_resource type="Environment" id="Environment_ljlps"]
+background_mode = 2
+sky = SubResource("Sky_vku8k")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node" type="Node"]
+script = ExtResource("1_h0ufm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ljlps")
+
+[node name="map2" parent="." instance=ExtResource("1_6sr6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.69126, -1.14252, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
