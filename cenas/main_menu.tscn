@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccanheu322yru"]
+[gd_scene load_steps=4 format=3 uid="uid://ccanheu322yru"]
 
 [ext_resource type="Script" path="res://cenas/main_menu.gd" id="1_0wiu4"]
+[ext_resource type="Texture2D" uid="uid://pakhxb4bo1fm" path="res://Textures/arte.png" id="2_sluo5"]
+[ext_resource type="PackedScene" uid="uid://dnlxwmramwmmu" path="res://cenas/Multiplayer/player_sala.tscn" id="3_gwb3e"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,39 +17,205 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0wiu4")
 
-[node name="MenuBotoes" type="Control" parent="."]
+[node name="Arte" type="Sprite2D" parent="."]
+position = Vector2(570.5, 321.75)
+scale = Vector2(1.85144, 1.55516)
+texture = ExtResource("2_sluo5")
+
+[node name="menu" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Host" type="Button" parent="MenuBotoes"]
+[node name="ColorRect" type="ColorRect" parent="menu"]
 layout_mode = 0
-offset_left = 928.0
-offset_top = 570.0
-offset_right = 1083.0
-offset_bottom = 621.0
-text = "Host"
+offset_left = -3.0
+offset_top = -2.0
+offset_right = 1150.0
+offset_bottom = 86.0
+color = Color(0.376471, 0.376471, 0.376471, 0.466667)
 
-[node name="Join" type="Button" parent="MenuBotoes"]
+[node name="Join" type="Button" parent="menu"]
 layout_mode = 0
-offset_left = 471.0
-offset_top = 268.0
-offset_right = 626.0
-offset_bottom = 319.0
-text = "Start"
+offset_left = 483.0
+offset_top = 16.0
+offset_right = 638.0
+offset_bottom = 67.0
+text = "Iniciar partida"
 
-[node name="MenuHost" type="Control" parent="."]
+[node name="Label" type="Label" parent="menu"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 29.0
+offset_right = 125.0
+offset_bottom = 52.0
+text = "nao conectado"
+
+[node name="opçoesDeJogo" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MenuHost"]
+[node name="ColorRect" type="ColorRect" parent="opçoesDeJogo"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 364.0
+offset_top = 244.0
+offset_right = 755.0
+offset_bottom = 356.0
+color = Color(0.376471, 0.376471, 0.376471, 0.466667)
 
-[node name="GridContainer" type="GridContainer" parent="MenuHost/ScrollContainer"]
+[node name="criarsala" type="Button" parent="opçoesDeJogo"]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 276.0
+offset_right = 547.0
+offset_bottom = 323.0
+text = "criar uma sala"
+
+[node name="EntrarEmUma" type="Button" parent="opçoesDeJogo"]
+layout_mode = 0
+offset_left = 580.0
+offset_top = 276.0
+offset_right = 715.0
+offset_bottom = 323.0
+text = "procurar salas"
+
+[node name="sala" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 36.0
+offset_bottom = 36.0
+
+[node name="ColorRect2" type="ColorRect" parent="sala"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 120.0
+offset_right = 1088.0
+offset_bottom = 576.0
+color = Color(0.376471, 0.376471, 0.376471, 0.466667)
+
+[node name="ColorRect3" type="ColorRect" parent="sala"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 200.0
+offset_right = 520.0
+offset_bottom = 544.0
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.866667)
+
+[node name="Label2" type="Label" parent="sala"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 160.0
+offset_right = 354.0
+offset_bottom = 183.0
+text = "players"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="sala"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 208.0
+offset_right = 512.0
+offset_bottom = 536.0
+
+[node name="GridContainer" type="GridContainer" parent="sala/ScrollContainer"]
 layout_mode = 2
 
-[connection signal="pressed" from="MenuBotoes/Host" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="MenuBotoes/Join" to="." method="_on_join_pressed"]
+[node name="playerSala" parent="sala/ScrollContainer/GridContainer" instance=ExtResource("3_gwb3e")]
+layout_mode = 2
+
+[node name="Dono" type="Control" parent="sala"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="fecharSala" type="Button" parent="sala/Dono"]
+layout_mode = 0
+offset_left = 872.0
+offset_top = 208.0
+offset_right = 1040.0
+offset_bottom = 296.0
+text = "fechar sala"
+
+[node name="IniciarJogo" type="Button" parent="sala/Dono"]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 208.0
+offset_right = 800.0
+offset_bottom = 296.0
+text = "Iniciar jogo"
+
+[node name="naoDono" type="Control" parent="sala"]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="sairdaSala" type="Button" parent="sala/naoDono"]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 208.0
+offset_right = 872.0
+offset_bottom = 296.0
+text = "sair da sala"
+
+[node name="Ver Sala" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 36.0
+offset_bottom = 36.0
+
+[node name="ColorRect2" type="ColorRect" parent="Ver Sala"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 120.0
+offset_right = 1088.0
+offset_bottom = 576.0
+color = Color(0.376471, 0.376471, 0.376471, 0.466667)
+
+[node name="ColorRect3" type="ColorRect" parent="Ver Sala"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 200.0
+offset_right = 1056.0
+offset_bottom = 544.0
+color = Color(0.0784314, 0.0784314, 0.0784314, 0.866667)
+
+[node name="Label2" type="Label" parent="Ver Sala"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 168.0
+offset_right = 1056.0
+offset_bottom = 191.0
+text = "salas
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Ver Sala"]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 208.0
+offset_right = 960.0
+offset_bottom = 536.0
+
+[node name="GridContainer" type="GridContainer" parent="Ver Sala/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="Procurar" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="pressed" from="menu/Join" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="opçoesDeJogo/criarsala" to="." method="_on_criarsala_pressed"]
+[connection signal="pressed" from="opçoesDeJogo/EntrarEmUma" to="." method="_on_entrar_em_uma_pressed"]
+[connection signal="pressed" from="sala/Dono/fecharSala" to="." method="_on_fechar_sala_pressed"]
+[connection signal="pressed" from="sala/naoDono/sairdaSala" to="." method="_on_sairda_sala_pressed"]
+[connection signal="timeout" from="Procurar" to="." method="_on_procurar_timeout"]

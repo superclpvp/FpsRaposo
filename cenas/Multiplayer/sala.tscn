@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp2wiobna7pfm"]
+
+[ext_resource type="Script" path="res://cenas/Multiplayer/sala.gd" id="1_4q6ch"]
+
+[node name="Sala" type="Control"]
+custom_minimum_size = Vector2(386, 66)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -728.0
+offset_bottom = -576.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4q6ch")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(384, 66)
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 66.0
+color = Color(0.450648, 0.450648, 0.450648, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 384.0
+offset_bottom = 25.0
+text = "player name"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_top = 26.0
+offset_right = 384.0
+offset_bottom = 49.0
+text = "0/0"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 96.0
+offset_bottom = 56.0
+text = "entrar"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

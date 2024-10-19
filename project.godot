@@ -15,6 +15,10 @@ run/main_scene="res://cenas/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Client="*res://cenas/Multiplayer/client.gd"
+
 [filesystem]
 
 import/blender/enabled=false

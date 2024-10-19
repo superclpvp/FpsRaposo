@@ -5,7 +5,8 @@ const port = 5555
 var enet_peer = ENetMultiplayerPeer.new()
 
 
-
+func _ready() -> void:
+	add_player(multiplayer.get_unique_id())
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("sair"):
