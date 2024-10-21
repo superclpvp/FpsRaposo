@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://f0efmj3dx7ni"]
-
-[ext_resource type="PackedScene" uid="uid://iu8y71s3otej" path="res://models/map.glb" id="1_mje6r"]
-[ext_resource type="Material" uid="uid://c6x2t7i38ymif" path="res://materiais/new_standard_material_3d.tres" id="2_4axts"]
-
-[node name="map" instance=ExtResource("1_mje6r")]
-
-[node name="Plane" parent="." index="0"]
-material_override = ExtResource("2_4axts")

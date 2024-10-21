@@ -128,7 +128,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Dono" type="Control" parent="sala"]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -217,5 +216,6 @@ wait_time = 0.1
 [connection signal="pressed" from="opçoesDeJogo/criarsala" to="." method="_on_criarsala_pressed"]
 [connection signal="pressed" from="opçoesDeJogo/EntrarEmUma" to="." method="_on_entrar_em_uma_pressed"]
 [connection signal="pressed" from="sala/Dono/fecharSala" to="." method="_on_fechar_sala_pressed"]
+[connection signal="pressed" from="sala/Dono/IniciarJogo" to="." method="_on_iniciar_jogo_pressed"]
 [connection signal="pressed" from="sala/naoDono/sairdaSala" to="." method="_on_sairda_sala_pressed"]
 [connection signal="timeout" from="Procurar" to="." method="_on_procurar_timeout"]

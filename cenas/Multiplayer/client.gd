@@ -1,7 +1,5 @@
 extends Node
 
-
-
 var enet_peer = ENetMultiplayerPeer.new()
 const port = 2222
 
@@ -19,6 +17,8 @@ func _ready() -> void:
 
 func _process(delta: float):
 	pass
+
+#region comunicacao app para client
 
 func entrarNaSala(nome):
 	rpc_id(1,"entrar_na_sala",nome,multiplayer.get_unique_id())
@@ -39,6 +39,9 @@ func fechar_sala():
 	sair_sala_bool = true
 	dado_sala = []
 	rpc_id(1,"pedindo_fechar_sala",multiplayer.get_unique_id())
+
+#endregion
+
 
 #region rpc do client
 @rpc("any_peer")

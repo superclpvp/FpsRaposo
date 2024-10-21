@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cfjv8j0taaw6a"]
 
-[ext_resource type="PackedScene" uid="uid://f0efmj3dx7ni" path="res://models/map.tscn" id="1_6sr6e"]
 [ext_resource type="Script" path="res://cenas/mapas/cena_1.gd" id="1_h0ufm"]
+[ext_resource type="PackedScene" uid="uid://mqbflcqpbf1p" path="res://cenas/Mapa.tscn" id="2_mgciu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_l08xl"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -26,7 +26,7 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ljlps")
 
-[node name="map2" parent="." instance=ExtResource("1_6sr6e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.69126, -1.14252, 0)
-
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="blockbench_export2" parent="." instance=ExtResource("2_mgciu")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.941934, 0)

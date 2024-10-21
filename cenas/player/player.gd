@@ -7,20 +7,20 @@ extends CharacterBody3D
 
 var vida = 3
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const SPEED = 10
+const JUMP_VELOCITY = 7
 
-func _enter_tree() -> void:
-	set_multiplayer_authority(str(name).to_int())
+#func _enter_tree() -> void:
+	#set_multiplayer_authority(str(name).to_int())
 
 func _ready() -> void:
-	if not is_multiplayer_authority(): return
+	#if not is_multiplayer_authority(): return
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	camera.current = true
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not is_multiplayer_authority(): return
+	#if not is_multiplayer_authority(): return
 	
 	if Input.is_action_just_pressed("dev"):
 		vida -= 1
@@ -29,7 +29,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotate_x(-event.relative.y * .005)
 		camera.rotation.x = clamp(camera.rotation.x, -PI/2, PI/2)
 	if Input.is_action_just_pressed("atirar") and animation.current_animation != "Tiro_Pist_1": 
-		rpc("play_shoot_effects")
+		#rpc("play_shoot_effects")
 		play_shoot_effectsLocal()
 		if raycast.is_colliding():
 			var hit_player = raycast.get_collider()
@@ -48,12 +48,12 @@ func _unhandled_input(event: InputEvent) -> void:
 				buraco.queue_free()
 
 func _physics_process(delta: float) -> void:
-	if not is_multiplayer_authority(): return
+	#if not is_multiplayer_authority(): return
 	
 	$Camera3D/ProgressBar.value = vida
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += Vector3(0,-15,0) * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -72,35 +72,37 @@ func _physics_process(delta: float) -> void:
 	if animation.current_animation == "Tiro_Pist_1":
 		pass
 	elif input_dir != Vector2.ZERO and is_on_floor():
-		animation.play("Andando_Pist_1")
+		#animation.play("Andando_Pist_1")
+		pass
 	else:
-		animation.play("Idle_Pist_1")
+		#animation.play("Idle_Pist_1")
+		pass
 	
 	move_and_slide()
-	var dados = [position,rotation,$Camera3D.rotation,animation.current_animation]
-	rpc_id(1,"sincronizarDados",dados)
+	#var dados = [position,rotation,$Camera3D.rotation,animation.current_animation]
+	#rpc_id(1,"sincronizarDados",dados)
 
-@rpc("any_peer")
-func sincronizarDados(dados):
-	pass
+#@rpc("any_peer")
+#func sincronizarDados(dados):
+	#pass
 
 func play_shoot_effectsLocal():
-	animation.stop()
-	muzzeflash.restart()
-	animation.play("Tiro_Pist_1")
+	#animation.stop()
+	#muzzeflash.restart()
+	#animation.play("Tiro_Pist_1")
 	muzzeflash.emitting = true
 
-@rpc("any_peer","reliable")
-func recebe_Dano():
-	vida -= 1
-	if vida <= 0:
-		global_position = Vector3.ZERO
-		vida = 3
-		
-
-@rpc("any_peer","reliable")
-func play_shoot_effects():
-	animation.stop()
-	muzzeflash.restart()
-	animation.play("Tiro_Pist_1")
-	muzzeflash.emitting = true
+#@rpc("any_peer","reliable")
+#func recebe_Dano():
+	#vida -= 1
+	#if vida <= 0:
+		#global_position = Vector3.ZERO
+		#vida = 3
+		#
+#
+#@rpc("any_peer","reliable")
+#func play_shoot_effects():
+	#animation.stop()
+	#muzzeflash.restart()
+	#animation.play("Tiro_Pist_1")
+	#muzzeflash.emitting = true

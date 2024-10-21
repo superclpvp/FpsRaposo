@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgxm03h0yfrqm"]
+
+[ext_resource type="PackedScene" uid="uid://cuajvm8pehq1r" path="res://cenas/player/Playermodel.gltf" id="1_vlijw"]
+
+[node name="blockbench_export" instance=ExtResource("1_vlijw")]
+
+[node name="PernaDireita" parent="Node/Robo" index="0"]
+visible = false
+
+[node name="PernaEsquerda" parent="Node/Robo" index="1"]
+visible = false
+
+[node name="Peitoral" parent="Node/Robo" index="4"]
+visible = false
+
+[node name="Cabeca" parent="Node/Robo" index="5"]
+visible = false

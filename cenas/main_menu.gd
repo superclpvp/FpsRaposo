@@ -86,9 +86,7 @@ func _process(delta: float) -> void:
 		$sala/naoDono.hide()
 		$sala.hide()
 
-#var cena = preload("res://cenas/mapas/cena1.tscn").instantiate()
-#get_tree().root.add_child(cena)
-#queue_free()
+
 func entrar_sala():
 	$"Ver Sala".hide()
 	$sala.show()
@@ -121,3 +119,9 @@ func _on_sairda_sala_pressed() -> void:
 
 func _on_fechar_sala_pressed() -> void:
 	Client.fechar_sala()
+
+
+func _on_iniciar_jogo_pressed() -> void:
+	var cena = preload("res://cenas/mapas/cena1.tscn").instantiate()
+	get_tree().root.add_child(cena)
+	queue_free()
