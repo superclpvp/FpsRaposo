@@ -5979,7 +5979,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00165129, 1.97118, 0.413259)
 
 [node name="pistola" parent="PlayerModel/Node/Robo/Node3D/Armas" instance=ExtResource("2_1d7ny")]
-transform = Transform3D(-0.0602598, -9.00307e-07, 1.3987, 0.181188, 1.3882, 0.00780691, -1.38692, 0.181355, -0.0597518, 0.968896, -1.07322, -2.25971)
+transform = Transform3D(-0.0602599, -8.61194e-07, 1.3987, 0.181188, 1.3882, 0.00780692, -1.38692, 0.181356, -0.059752, 0.968896, -1.07322, -2.25971)
 visible = false
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="PlayerModel/Node/Robo/Node3D/Armas/pistola"]
@@ -6040,7 +6040,7 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.757707, -3.31805, -0.
 [node name="Robo" type="Node3D" parent="Camera3D/PlayerSingle/Node"]
 
 [node name="BracoDireita" type="Node3D" parent="Camera3D/PlayerSingle/Node/Robo"]
-transform = Transform3D(-0.518176, -0.488425, 0.702093, 0.186273, -0.865641, -0.464723, 0.834743, -0.110028, 0.539535, -0.901741, 3.29574, -0.210298)
+transform = Transform3D(-0.518176, -0.488425, 0.702093, 0.186273, -0.865641, -0.464723, 0.834743, -0.110028, 0.539535, -0.517643, 3.11468, -0.332)
 
 [node name="biceps" type="Node3D" parent="Camera3D/PlayerSingle/Node/Robo/BracoDireita"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.395833, 0.127858, 0.00279539)
@@ -6061,13 +6061,13 @@ mesh = SubResource("ArrayMesh_spmh3")
 skeleton = NodePath("")
 
 [node name="antebraco" type="Node3D" parent="Camera3D/PlayerSingle/Node/Robo/BracoDireita"]
-transform = Transform3D(0.8494, -0.328406, 0.413121, 0.325982, 0.942097, 0.0786726, -0.415036, 0.0678454, 0.907272, -0.90625, 0.0872329, 0.00279539)
+transform = Transform3D(0.8494, -0.328407, 0.413121, 0.325982, 0.942097, 0.0786726, -0.415036, 0.0678457, 0.907272, -0.90625, 0.0872329, 0.00279539)
 
 [node name="mao" type="Node3D" parent="Camera3D/PlayerSingle/Node/Robo/BracoDireita/antebraco"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.523438, -0.9375, 0.265625)
 
 [node name="dedao" type="Node3D" parent="Camera3D/PlayerSingle/Node/Robo/BracoDireita/antebraco/mao"]
-transform = Transform3D(0.94221, 0.0844142, 0.324215, -0.0298147, 0.985024, -0.16982, -0.333695, 0.15034, 0.930616, -0.0681682, 0.97996, -0.46875)
+transform = Transform3D(0.94221, 0.0844141, 0.324215, -0.0298147, 0.985024, -0.16982, -0.333695, 0.15034, 0.930616, -0.0681682, 0.97996, -0.46875)
 
 [node name="bone5" type="Node3D" parent="Camera3D/PlayerSingle/Node/Robo/BracoDireita/antebraco/mao/dedao"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.377003, 0, -0.21875)
@@ -6154,7 +6154,7 @@ mesh = SubResource("ArrayMesh_uaq6j")
 skeleton = NodePath("")
 
 [node name="BracoEsquerdo" type="Node3D" parent="Camera3D/PlayerSingle/Node/Robo"]
-transform = Transform3D(0.14486, 0.98643, 0.0772789, -0.0725941, 0.0884878, -0.993429, -0.986786, 0.138298, 0.0844273, 0.926461, 2.66306, 1.35039)
+transform = Transform3D(0.14486, 0.98643, 0.0772788, -0.072594, 0.0884876, -0.993429, -0.986786, 0.138297, 0.0844272, 0.61761, 3.02912, -0.287397)
 
 [node name="biceps2" type="Node3D" parent="Camera3D/PlayerSingle/Node/Robo/BracoEsquerdo"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.195313, -0.850267, 0.00279539)
@@ -6173,7 +6173,7 @@ mesh = SubResource("ArrayMesh_5y28k")
 skeleton = NodePath("")
 
 [node name="antebraco2" type="Node3D" parent="Camera3D/PlayerSingle/Node/Robo/BracoEsquerdo"]
-transform = Transform3D(0.7656, 0.594427, 0.245995, -0.567369, 0.804141, -0.177343, -0.303232, -0.00379619, 0.952909, 0.90625, 0.0872329, 0.00279546)
+transform = Transform3D(0.7656, 0.594427, 0.245995, -0.567369, 0.804141, -0.177343, -0.303232, -0.0037961, 0.952909, 0.90625, 0.0872329, 0.00279546)
 
 [node name="mao2" type="Node3D" parent="Camera3D/PlayerSingle/Node/Robo/BracoEsquerdo/antebraco2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.273438, -0.9375, 0.265625)
@@ -6211,7 +6211,7 @@ mesh = SubResource("ArrayMesh_u2mse")
 skeleton = NodePath("")
 
 [node name="meio2" type="Node3D" parent="Camera3D/PlayerSingle/Node/Robo/BracoEsquerdo/antebraco2/mao2"]
-transform = Transform3D(0.597853, 0.741881, -0.303618, -0.778638, 0.627473, 6.26417e-09, 0.190512, 0.236408, 0.952794, 0.539063, 1, -0.264062)
+transform = Transform3D(0.597853, 0.741881, -0.303617, -0.778638, 0.627474, 8.30405e-09, 0.190512, 0.236408, 0.952794, 0.539063, 1, -0.264062)
 
 [node name="bone3" type="Node3D" parent="Camera3D/PlayerSingle/Node/Robo/BracoEsquerdo/antebraco2/mao2/meio2"]
 transform = Transform3D(0.261838, 0.965111, 0, -0.965111, 0.261838, 0, 0, 0, 1, 0.25, 0, -2.77556e-17)
@@ -6227,7 +6227,7 @@ mesh = SubResource("ArrayMesh_y6s1q")
 skeleton = NodePath("")
 
 [node name="dedinho2" type="Node3D" parent="Camera3D/PlayerSingle/Node/Robo/BracoEsquerdo/antebraco2/mao2"]
-transform = Transform3D(0.547499, 0.757202, -0.356216, -0.810359, 0.585934, -2.45772e-07, 0.208719, 0.288663, 0.934404, 0.539063, 1, -0.132813)
+transform = Transform3D(0.547499, 0.757202, -0.356216, -0.810359, 0.585934, -1.20753e-08, 0.208719, 0.288663, 0.934404, 0.539063, 1, -0.132813)
 
 [node name="bone4" type="Node3D" parent="Camera3D/PlayerSingle/Node/Robo/BracoEsquerdo/antebraco2/mao2/dedinho2"]
 transform = Transform3D(0.323472, 0.946238, 0, -0.946238, 0.323472, 0, 0, 0, 1, 0.25, 0, 0)
@@ -6269,7 +6269,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.359236, 4.09649, 0.114674)
 
 [node name="pistola" parent="Camera3D/PlayerSingle/Armas" instance=ExtResource("2_1d7ny")]
 transform = Transform3D(-0.0602599, -8.61194e-07, 1.3987, 0.181188, 1.3882, 0.00780692, -1.38692, 0.181356, -0.059752, 0.968896, -1.07322, -2.25971)
-visible = false
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Camera3D/PlayerSingle/Armas/pistola"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.554591, 0.441137, 0.0179061)
@@ -6283,6 +6282,7 @@ draw_pass_1 = SubResource("PlaneMesh_l2jyc")
 
 [node name="Fuzil1" parent="Camera3D/PlayerSingle/Armas" instance=ExtResource("4_5po0o")]
 transform = Transform3D(1.49414, -0.0436571, 0.125108, 0.0645892, 1.47656, -0.256118, -0.115699, 0.260504, 1.47267, 0.937313, -1.5167, -0.891702)
+visible = false
 
 [node name="ping" type="Label" parent="Camera3D"]
 offset_right = 40.0
@@ -6301,7 +6301,7 @@ playback_default_blend_time = 0.05
 [node name="AnimationTree" type="AnimationTree" parent="."]
 
 [node name="EnviarDados" type="Timer" parent="."]
-wait_time = 0.01
+wait_time = 0.001
 autostart = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

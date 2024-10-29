@@ -30,3 +30,71 @@ environment = SubResource("Environment_ljlps")
 
 [node name="blockbench_export2" parent="." instance=ExtResource("2_mgciu")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.941934, 0)
+
+[node name="Spawns" type="Node" parent="."]
+
+[node name="SpawnCt" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.9697, 1.49966, 0)
+
+[node name="SpawnCt2" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1177, 1.49966, 0)
+
+[node name="SpawnCt3" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.646, 1.49966, -2.87296)
+
+[node name="SpawnCt4" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.646, 1.49966, 3.62717)
+
+[node name="SpawnCt5" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3296, 1.49966, 3.62717)
+
+[node name="SpawnTR" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.9697, 8.32531, -142.589)
+
+[node name="SpawnTR2" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5684, 8.32531, -142.589)
+
+[node name="SpawnTR3" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.3098, 8.32531, -136.813)
+
+[node name="SpawnTR4" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.3098, 8.32531, -146.834)
+
+[node name="SpawnTR5" type="Node3D" parent="Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.785, 8.32531, -141.688)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.742756, -0.0939693, 0.662935, 0.0701065, 0.995575, 0.0625725, -0.665882, 1.43428e-08, 0.746057, 0, 14, 16)
+current = true
+
+[node name="Hud" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Camera3D/Hud"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 22.0
+offset_right = 1128.0
+offset_bottom = 606.0
+color = Color(0.443137, 0.443137, 0.443137, 0.341176)
+
+[node name="ct" type="Button" parent="Camera3D/Hud"]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 264.0
+offset_right = 425.0
+offset_bottom = 347.0
+text = "CT"
+
+[node name="tr" type="Button" parent="Camera3D/Hud"]
+layout_mode = 0
+offset_left = 765.0
+offset_top = 260.0
+offset_right = 924.0
+offset_bottom = 343.0
+text = "TR"
+
+[connection signal="pressed" from="Camera3D/Hud/ct" to="." method="_on_ct_pressed"]

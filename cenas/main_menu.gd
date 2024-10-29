@@ -57,6 +57,11 @@ func _process(delta: float) -> void:
 		$Procurar.stop()
 	
 	if dentro_sala:
+		
+		if Client.criar_Partida:
+			criar_partida()
+		
+		
 		if Client.sair_sala_bool:
 			$menu.show()
 			$sala.hide()
@@ -120,8 +125,14 @@ func _on_sairda_sala_pressed() -> void:
 func _on_fechar_sala_pressed() -> void:
 	Client.fechar_sala()
 
-
-func _on_iniciar_jogo_pressed() -> void:
+func criar_partida():
 	var cena = preload("res://cenas/mapas/cena1.tscn").instantiate()
 	get_tree().root.add_child(cena)
+	cena.players_id = Client.sala_players
+	print(cena.players_id)
 	queue_free()
+
+
+func _on_iniciar_jogo_pressed() -> void:
+	Client.criarPartida()
+	

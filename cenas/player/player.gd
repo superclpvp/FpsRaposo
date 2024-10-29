@@ -6,21 +6,31 @@ extends CharacterBody3D
 @onready var raycast = $Camera3D/RayCast3D
 
 var vida = 3
+var players = []
+
+var Meu_ping = 10
 
 const SPEED = 10
-const JUMP_VELOCITY = 7
+const JUMP_VELOCITY = 10
 
-#func _enter_tree() -> void:
-	#set_multiplayer_authority(str(name).to_int())
+func _enter_tree() -> void:
+	set_multiplayer_authority(str(name).to_int())
 
 func _ready() -> void:
-	#if not is_multiplayer_authority(): return
-	
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	camera.current = true
+	if not is_multiplayer_authority(): 
+		print("nao sou eu")
+		$Camera3D/PlayerSingle.hide()
+		$PlayerModel.show()
+	else:
+		$Camera3D/PlayerSingle.show()
+		$PlayerModel.hide()
+		print("sou eu")
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		camera.current = true
 
 func _unhandled_input(event: InputEvent) -> void:
-	#if not is_multiplayer_authority(): return
+	if not is_multiplayer_authority(): return
+	
 	
 	if Input.is_action_just_pressed("dev"):
 		vida -= 1
@@ -48,9 +58,11 @@ func _unhandled_input(event: InputEvent) -> void:
 				buraco.queue_free()
 
 func _physics_process(delta: float) -> void:
-	#if not is_multiplayer_authority(): return
+	if not is_multiplayer_authority(): return
 	
-	$Camera3D/ProgressBar.value = vida
+	$Camera3D/ping.text = str("ping ", int(Meu_ping * 10))
+	
+	$Camera3D/VidaBarra.value = vida
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += Vector3(0,-15,0) * delta
@@ -64,11 +76,13 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
 	if animation.current_animation == "Tiro_Pist_1":
 		pass
 	elif input_dir != Vector2.ZERO and is_on_floor():
@@ -79,30 +93,44 @@ func _physics_process(delta: float) -> void:
 		pass
 	
 	move_and_slide()
-	#var dados = [position,rotation,$Camera3D.rotation,animation.current_animation]
-	#rpc_id(1,"sincronizarDados",dados)
 
-#@rpc("any_peer")
-#func sincronizarDados(dados):
-	#pass
+var last_ping_time: float  
+
+
+
+@rpc("any_peer","unreliable")
+func sincronizar_dados(dados):
+	position = dados[1]#lerp(position,dados[1],0.1)
+	rotation = dados[2]#lerp(rotation,dados[2],0.1)
+	$PlayerModel/Node/Robo/Node3D.rotation = dados[3]#lerp($Camera3D.rotation ,dados[3],0.1)
+	$Camera3D.rotation = dados[3]#lerp($Camera3D.rotation ,dados[3],0.1)
 
 func play_shoot_effectsLocal():
-	#animation.stop()
-	#muzzeflash.restart()
-	#animation.play("Tiro_Pist_1")
-	muzzeflash.emitting = true
-
-#@rpc("any_peer","reliable")
-#func recebe_Dano():
-	#vida -= 1
-	#if vida <= 0:
-		#global_position = Vector3.ZERO
-		#vida = 3
-		#
-#
-#@rpc("any_peer","reliable")
-#func play_shoot_effects():
-	#animation.stop()
-	#muzzeflash.restart()
-	#animation.play("Tiro_Pist_1")
 	#muzzeflash.emitting = true
+	pass
+
+
+func _on_enviar_dados_timeout() -> void:
+	enviarDados()
+
+func enviarDados():
+	var dados = [multiplayer.get_unique_id(),position,rotation,$Camera3D.rotation,animation.current_animation]
+	for i in range(players.size()):
+		if players[i] != multiplayer.get_unique_id():
+			rpc_id(players[i],"sincronizar_dados",dados)
+			Start_ping(players[i])
+
+#ping
+func Start_ping(player):
+	last_ping_time = Time.get_unix_time_from_system()
+	rpc_id(player,"ping",false)
+
+@rpc("any_peer")
+func ping(target_id: int):  
+	var sender_id: int = multiplayer.get_remote_sender_id()
+	rpc_id(sender_id,"print_ping")
+
+@rpc("any_peer")      
+func print_ping():
+	var pingV = Time.get_unix_time_from_system() - last_ping_time 
+	Meu_ping = pingV

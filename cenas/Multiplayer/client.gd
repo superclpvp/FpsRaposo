@@ -8,6 +8,9 @@ var mudou = false
 
 var sair_sala_bool = false
 
+var sala_players = []
+var criar_Partida = false
+
 var salas
 var Numero_salas
 
@@ -19,6 +22,10 @@ func _process(delta: float):
 	pass
 
 #region comunicacao app para client
+func criarPartida():
+	rpc_id(1,"partida_criar",multiplayer.get_unique_id())
+
+
 
 func entrarNaSala(nome):
 	rpc_id(1,"entrar_na_sala",nome,multiplayer.get_unique_id())
@@ -44,6 +51,12 @@ func fechar_sala():
 
 
 #region rpc do client
+
+@rpc("any_peer")
+func enviar_players(player):
+	sala_players = player
+	criar_Partida = true
+
 @rpc("any_peer")
 func PegarSalas(dados,Nsalas):
 	salas = dados
@@ -66,6 +79,11 @@ func sair_sala():
 
 
 #region rpc do server
+
+@rpc("any_peer")
+func partida_criar(id_sala):
+	pass
+
 @rpc("any_peer")
 func pedindo_fechar_sala(id):
 	pass

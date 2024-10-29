@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cswes0s0f8xtx"]
+
+[ext_resource type="PackedScene" uid="uid://cuajvm8pehq1r" path="res://cenas/player/Playermodel.gltf" id="1_lr8rh"]
+
+[node name="blockbench_export" instance=ExtResource("1_lr8rh")]
